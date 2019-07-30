@@ -20,12 +20,14 @@ public class Main {
         for (User user : users) {
             if (result.containsKey(user.getDepartment())) {
                 result.get(user.getDepartment()).add(user);
-                Collections.sort(result.get(user.getDepartment()));
             } else {
                 List<User> list = new ArrayList<>();
                 list.add(user);
                 result.put(user.getDepartment(), list);
             }
+        }
+        for (Map.Entry<String, List<User>> entry : result.entrySet()){
+            Collections.sort(entry.getValue());
         }
         return result;
     }
