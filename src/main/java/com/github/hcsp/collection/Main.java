@@ -17,6 +17,7 @@ public class Main {
             String department = user.getDepartment();
             if (map.containsKey(department)){
                 map.get(department).add(user);
+                Collections.sort(map.get(department));
             }else{
                 List<User> list = new ArrayList<>();
                 list.add(user);
@@ -28,10 +29,17 @@ public class Main {
     }
 
     public static void main(String[] args) {
+        List<User> list =  Arrays.asList(
+                new User(1, "张三", 40, "技术部"),
+                new User(1, "张三", 20, "技术部"),
+                new User(2, "李四", 30, "技术部"),
+                new User(3, "王五", 40, "市场部"));
+        System.out.println(list);
         System.out.println(
                 collect(
                         Arrays.asList(
                                 new User(1, "张三", 40, "技术部"),
+                                new User(1, "张三", 20, "技术部"),
                                 new User(2, "李四", 30, "技术部"),
                                 new User(3, "王五", 40, "市场部"))));
     }
