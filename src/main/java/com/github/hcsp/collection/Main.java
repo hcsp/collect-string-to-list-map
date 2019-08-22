@@ -1,12 +1,11 @@
 package com.github.hcsp.collection;
 
-
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.HashMap;
+import java.util.Iterator;
 
 public class Main {
     // 请编写一个方法，对传入的List<User>进行如下处理：
@@ -18,22 +17,32 @@ public class Main {
     //    市场部 -> [{name=王五, department=市场部, age=40 }]
     public static Map<String, List<User>> collect(List<User> users) {
         Map<String, List<User>> result = new HashMap<>();
+        generateMap(users, result);
+        sortUserList(result);
+        return result;
+    }
+
+    private static void sortUserList(Map<String, List<User>> result) {
+        for (Map.Entry<String, List<User>> entry : result.entrySet()) {
+            List<User> userList = entry.getValue();
+            userList.sort(User::compareTo);
+        }
+    }
+
+    private static void generateMap(List<User> users, Map<String, List<User>> result) {
         Iterator<User> iter = users.iterator();
         while (iter.hasNext()){
             User user = iter.next();
             if (result.containsKey(user.getDepartment())){
                 List<User> oneDepartMentList = result.get(user.getDepartment());
                 oneDepartMentList.add(user);
-                oneDepartMentList.sort(User::compareTo);
                 result.put(user.getDepartment(), oneDepartMentList);
             } else {
                 List<User> newDepartMentList = new ArrayList<>();
                 newDepartMentList.add(user);
                 result.put(user.getDepartment(), newDepartMentList);
             }
-
         }
-        return result;
     }
 
     public static void main(String[] args) {
