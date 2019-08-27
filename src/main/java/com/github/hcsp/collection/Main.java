@@ -1,7 +1,7 @@
 package com.github.hcsp.collection;
 
+
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class Main {
     // 请编写一个方法，对传入的List<User>进行如下处理：
@@ -19,8 +19,8 @@ public class Main {
                 if (!map.containsKey(user.getDepartment())){
                     List<User> list = new ArrayList<>();
                     list.add(user);
-                    map.put(user.getDepartment(),list);
-                }else{
+                    map.put(user.getDepartment(), list);
+                } else{
                     map.get(user.getDepartment()).add(user);
                 }
             }
