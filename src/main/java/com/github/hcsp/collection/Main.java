@@ -1,7 +1,12 @@
 package com.github.hcsp.collection;
 
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Collections;
+import java.util.Arrays;
 
 public class Main {
     // 请编写一个方法，对传入的List<User>进行如下处理：
@@ -15,12 +20,12 @@ public class Main {
 
             Map<String, List<User>> map = new HashMap<>();
 
-            for (User user:users){
+            for (User user:users) {
                 if (!map.containsKey(user.getDepartment())){
                     List<User> list = new ArrayList<>();
                     list.add(user);
                     map.put(user.getDepartment(), list);
-                } else{
+                } else {
                     map.get(user.getDepartment()).add(user);
                 }
             }
