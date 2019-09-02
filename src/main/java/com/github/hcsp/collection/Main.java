@@ -22,7 +22,7 @@ public class Main {
         Map<String, List<User>> deptMap = new HashMap<>();
         for(User user : users) {
             if (!deptMap.containsKey(user.getDepartment())){
-                ArrayList<User> userArr = new ArrayList<>(){{add(user);}};
+                ArrayList<User> userArr = new ArrayList<User>(){{add(user);}};
                 deptMap.put(user.getDepartment(), userArr);
             }else {
                 deptMap.get(user.getDepartment()).add(user);
