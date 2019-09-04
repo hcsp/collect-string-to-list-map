@@ -1,8 +1,8 @@
 package com.github.hcsp.collection;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Main {
     // 请编写一个方法，对传入的List<User>进行如下处理：
@@ -12,7 +12,28 @@ public class Main {
     // 返回如下映射：
     //    技术部 -> [{name=李四, department=技术部, age=30 }, {name=张三, department=技术部, age=40 }]
     //    市场部 -> [{name=王五, department=市场部, age=40 }]
-    public static Map<String, List<User>> collect(List<User> users) {}
+    public static Map<String, List<User>> collect(List<User> users) {
+       /* Map<String, List<User>> groupByDepartment = new HashMap<>();
+        for (User user : users) {
+            String departmentName = user.getDepartment();
+            List<User> userList = groupByDepartment.get(user.getDepartment());
+
+            if (userList == null) {
+                userList = new ArrayList<>();
+                userList.add(user);
+                groupByDepartment.put(departmentName, userList);
+            } else {
+                userList.add(user);
+            }
+
+            Collections.sort(userList, (o1, o2) -> (o1.getAge() - o2.getAge()));
+        }
+        return groupByDepartment;*/
+
+
+
+        return users.stream().sorted(Comparator.comparing(User::getAge)).collect(Collectors.groupingBy(User::getDepartment));
+    }
 
     public static void main(String[] args) {
         System.out.println(
@@ -20,6 +41,10 @@ public class Main {
                         Arrays.asList(
                                 new User(1, "张三", 40, "技术部"),
                                 new User(2, "李四", 30, "技术部"),
-                                new User(3, "王五", 40, "市场部"))));
+                                new User(3, "王五", 40, "市场部"),
+                                new User(3, "赵六", 50, "市场部")
+                        )));
     }
+
+
 }
