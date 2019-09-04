@@ -1,6 +1,10 @@
 package com.github.hcsp.collection;
 
-import java.util.*;
+
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class Main {
@@ -21,7 +25,6 @@ public class Main {
                         Arrays.asList(
                                 new User(1, "张三", 40, "技术部"),
                                 new User(2, "李四", 30, "技术部"),
-                                new User(3, "王五", 40, "市场部")
-                        )));
+                                new User(3, "王五", 40, "市场部"))));
     }
 }
