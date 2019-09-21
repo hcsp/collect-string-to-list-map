@@ -1,13 +1,11 @@
 package com.github.hcsp.collection;
 
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class Main {
     // 请编写一个方法，对传入的List<User>进行如下处理：
@@ -19,28 +17,9 @@ public class Main {
     //    市场部 -> [{name=王五, department=市场部, age=40 }]
     public static Map<String, List<User>> collect(List<User> users) {
 
-        Map<String, List<User>> map = new HashMap<>();
-
-        // The 1st, put them all into the map
-        users.forEach(user -> {
-            String department = user.getDepartment();
-
-            List<User> list = map.get(department);
-            if (Objects.isNull(list)) {
-                list = new ArrayList<>();
-                map.put(department, list);
-            }
-
-            list.add(user);
-        });
-
-        // The 2nd, sort each list of map
-        for (String key : map.keySet()) {
-            List<User> list = map.get(key);
-            list.sort(Comparator.comparingInt(User::getAge));
-        }
-
-        return map;
+        return users.stream()
+                .sorted(Comparator.comparing(User::getAge))
+                .collect(Collectors.groupingBy(User::getDepartment));
     }
 
     public static void main(String[] args) {
