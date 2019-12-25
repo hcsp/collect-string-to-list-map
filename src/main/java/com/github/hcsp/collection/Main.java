@@ -20,9 +20,13 @@ public class Main {
     public static Map<String, List<User>> collect(List<User> users) {
         Collections.sort(users);
         Map<String, List<User>> deptMap = new HashMap<>();
-        for(User user : users) {
+        for (User user : users) {
             if (!deptMap.containsKey(user.getDepartment())){
-                ArrayList<User> userArr = new ArrayList<User>(){{add(user);}};
+                ArrayList<User> userArr = new ArrayList<User>(){
+                    {
+                        add(user);
+                    }
+                };
                 deptMap.put(user.getDepartment(), userArr);
             }else {
                 deptMap.get(user.getDepartment()).add(user);
