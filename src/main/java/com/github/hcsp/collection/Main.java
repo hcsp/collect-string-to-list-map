@@ -13,7 +13,7 @@ public class Main {
     public static Map<String, List<User>> collect(List<User> users) {
         Map<String, List<User>> userList = new TreeMap<>();
         for (User u : users) {
-            if (!userList.keySet().contains(u.getDepartment())) {
+            if (!userList.containsKey(u.getDepartment())) {
                 List<User> addUsers = new ArrayList<>();
                 addUsers.add(u);
                 userList.put(u.getDepartment(), addUsers);
