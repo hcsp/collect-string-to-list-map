@@ -14,10 +14,10 @@ public class Main {
         Map<String, List<User>> map = new HashMap<>();
         List<User> Tech = new ArrayList<>();
         List<User> Market = new ArrayList<>();
-        for(User element : users) {
-            if(element.getDepartment().equals("技术部")) {
+        for (User element : users) {
+            if (element.getDepartment().equals("技术部")) {
                 Tech.add(element);
-            } else if(element.getDepartment().equals("市场部")) {
+            } else if (element.getDepartment().equals("市场部")) {
                 Market.add(element);
             }
         }
