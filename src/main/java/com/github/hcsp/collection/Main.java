@@ -21,11 +21,16 @@ public class Main {
             if (userMap.containsKey(user.getDepartment())) {
                 List<User> newUsers = new ArrayList<>(userMap.get(user.getDepartment()));
                 newUsers.add(user);
-                Collections.sort(newUsers);
+                //Collections.sort(newUsers);
                 userMap.put(user.getDepartment(), newUsers);
             } else {
                 userMap.put(user.getDepartment(), Collections.singletonList(user));
             }
+        }
+
+        List<List<User>> newUser = new ArrayList<>(userMap.values());
+        for (List<User> userList : newUser) {
+            Collections.sort(userList);
         }
         return userMap;
     }
