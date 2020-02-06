@@ -13,7 +13,7 @@ public class Main {
     //    市场部 -> [{name=王五, department=市场部, age=40 }]
     public static Map<String, List<User>> collect(List<User> users) {
         Map<String, List<User>> map = new HashMap();
-        List<User> userList = users.stream().sorted(Comparator.comparingInt(User::getAge).reversed()).collect(Collectors.toList());
+        List<User> userList = users.stream().sorted(Comparator.comparingInt(User::getAge)).collect(Collectors.toList());
         for(User user : userList){
             if(map.containsKey(user.getDepartment())){
                 map.get(user.getDepartment()).add(user);
