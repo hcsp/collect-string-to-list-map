@@ -18,12 +18,10 @@ public class Main {
     //    市场部 -> [{name=王五, department=市场部, age=40 }]
     public static Map<String, List<User>> collect(List<User> users) {
         Map<String, List<User>> map = new HashMap<>();
-        List<User> mapValue;
         Set<User> treeSet = new TreeSet<>();
         for (User user : users) {
             if (map.containsKey(user.getDepartment())) {
-                mapValue = map.get(user.getDepartment());
-                treeSet.addAll(mapValue);
+                treeSet.addAll(map.get(user.getDepartment()));
                 treeSet.add(user);
                 map.put(user.getDepartment(), new ArrayList<>(treeSet));
                 treeSet.clear();
