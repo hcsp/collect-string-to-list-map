@@ -28,7 +28,7 @@ public class Main {
                 map.put(user.getDepartment(), new ArrayList<>(treeSet));
                 treeSet.clear();
             } else {
-                map.put(user.getDepartment(),Arrays.asList(user));
+                map.put(user.getDepartment(), Arrays.asList(user));
             }
         }
         return map;
