@@ -14,11 +14,11 @@ public class Main {
     public static Map<String, List<User>> collect(List<User> users) {
         Map<String, List<User>> map = new HashMap();
         List<User> userList = users.stream().sorted(Comparator.comparingInt(User::getAge)).collect(Collectors.toList());
-        for(User user : userList){
-            if(map.containsKey(user.getDepartment())){
+        for (User user : userList){
+            if (map.containsKey(user.getDepartment())){
                 map.get(user.getDepartment()).add(user);
-            }else{
-                map.put(user.getDepartment(),new ArrayList<>(Collections.singleton(user)));
+            } else {
+                map.put(user.getDepartment(), new ArrayList<>(Collections.singleton(user)));
             }
         }
         return map;
