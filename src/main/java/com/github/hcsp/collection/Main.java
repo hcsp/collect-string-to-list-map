@@ -12,14 +12,14 @@ public class Main {
     //    市场部 -> [{name=王五, department=市场部, age=40 }]
     public static Map<String, List<User>> collect(List<User> users) {
         HashMap<String,List<User>> map=new HashMap<>();
-        Set<String> keys =map.keySet();//用来存储不同的部门
+        Set<String> keys =map.keySet();
         for(User u:users){//先收集，再对同一部门按年龄进行排序
             if(!keys.contains(u.getDepartment())){
-                List<User> list = new ArrayList<>();//部门不存在，便新建一个部门集合，加入图中部门对应集合
+                List<User> list = new ArrayList<>();
                 list.add(u);
                 map.put(u.getDepartment(),list);
             }else{
-                List<User> list2=map.get(u.getDepartment());//部门已存在，取出该部门的集合，将该成员加进去
+                List<User> list2=map.get(u.getDepartment());
                 list2.add(u);
             }
         }
