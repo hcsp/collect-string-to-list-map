@@ -11,21 +11,21 @@ public class Main {
     //    技术部 -> [{name=李四, department=技术部, age=30 }, {name=张三, department=技术部, age=40 }]
     //    市场部 -> [{name=王五, department=市场部, age=40 }]
     public static Map<String, List<User>> collect(List<User> users) {
-        HashMap<String, List<User>> map=new HashMap<>();
-        Set<String> keys =map.keySet();
-        for (User u:users){
-            if(!keys.contains(u.getDepartment())){
+        HashMap<String, List<User>> map = new HashMap<>();
+        Set<String> keys = map.keySet();
+        for (User u : users) {
+            if (!keys.contains(u.getDepartment())) {
                 List<User> list = new ArrayList<>();
                 list.add(u);
-                map.put(u.getDepartment(), list);}
-            else{
+                map.put(u.getDepartment(), list);
+            } else {
 
-                List<User> list2=map.get(u.getDepartment());
+                List<User> list2 = map.get(u.getDepartment());
                 list2.add(u);
             }
         }
-        for (String key:map.keySet()
-             ) {
+        for (String key : map.keySet()
+        ) {
             Collections.sort(map.get(key));
         }
         return map;
