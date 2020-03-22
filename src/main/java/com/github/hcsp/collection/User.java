@@ -60,12 +60,15 @@ public class User implements Comparable<User> {
     @Override
     public String toString() {
         return "{" +
-                 "name=" + name +
-                 ", department=" + department  +
+                "name=" + name +
+                ", department=" + department +
                 ", age=" + age +
                 "}";
     }
 
 }
+
+
+
 
 
