@@ -11,26 +11,23 @@ public class Main {
     //    技术部 -> [{name=李四, department=技术部, age=30 }, {name=张三, department=技术部, age=40 }]
     //    市场部 -> [{name=王五, department=市场部, age=40 }]
     public static Map<String, List<User>> collect(List<User> users) {
-        Map<String, List<User>> companyMap = new HashMap<>();
-        HashSet<String> departments = new HashSet<>();
+        Map<String, List<User>> map = new HashMap<>();
+        Set<String> set = new HashSet<>();
         for (User user : users) {
-            departments.add(user.getDepartment());
+            set.add(user.getDepartment());
         }
-        for (String department : departments) {
-            List<User> userInDepartment = new ArrayList<>();
+        for (String department : set) {
+            List<User> list = new ArrayList<>();
             for (User user : users) {
                 if (department.equals(user.getDepartment())) {
-                    userInDepartment.add(user);
+                    list.add(user);
                 }
             }
-            Collections.sort(userInDepartment);
-            companyMap.put(department, userInDepartment);
+            Collections.sort(list);
+            map.put(department, list);
         }
-
-
-        return companyMap;
-        }
-
+        return map;
+    }
 
     public static void main(String[] args) {
         System.out.println(
@@ -40,5 +37,5 @@ public class Main {
                                 new User(2, "李四", 30, "技术部"),
                                 new User(3, "王五", 40, "市场部"))));
     }
-
 }
+
