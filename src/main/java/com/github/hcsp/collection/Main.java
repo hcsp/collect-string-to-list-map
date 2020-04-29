@@ -15,17 +15,13 @@ public class Main {
         users.sort(new Comparator<User>() {
             @Override
             public int compare(User o1, User o2) {
-                if (o1.getAge() < o2.getAge()){
-                    return 1;
-                } else {
-                    return -1;
-                }
+                return o1.getAge() - o2.getAge();
             }
         });
+
         for (int i = 0; i < users.size(); i++) {
             List<User> personDetail = new ArrayList<>();
             personDetail.add(users.get(i));
-            staff.put(users.get(i).getDepartment(), personDetail);
 
             //如果包含这个部门，就在原来的基础上增加即可
             if (staff.containsKey(users.get(i).getDepartment())) {
@@ -34,7 +30,6 @@ public class Main {
                 staff.put(users.get(i).getDepartment(), personDetail);
             }
         }
-        System.out.println(staff.get("技术部").get(0).getAge());
         return staff;
     }
 

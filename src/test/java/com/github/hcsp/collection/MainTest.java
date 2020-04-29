@@ -5,8 +5,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
-public class MainTest {//    @Test
+public class MainTest {
+    @Test
     public void test() {
         Map<String, List<User>> map =
                 Main.collect(
