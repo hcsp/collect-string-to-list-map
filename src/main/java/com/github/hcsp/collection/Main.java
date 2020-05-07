@@ -11,6 +11,14 @@ public class Main {
     //    技术部 -> [{name=李四, department=技术部, age=30 }, {name=张三, department=技术部, age=40 }]
     //    市场部 -> [{name=王五, department=市场部, age=40 }]
     public static Map<String, List<User>> collect(List<User> users) {
+
+        users.sort(new Comparator<User>() {
+            @Override
+            public int compare(User o1, User o2) {
+                return o1.getAge() - o2.getAge();
+            }
+        });
+
         HashMap<String, List<User>> map = new HashMap<>();
         for (User u : users) {
             if (map.containsKey(u.getDepartment())) {
