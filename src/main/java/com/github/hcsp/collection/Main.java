@@ -11,14 +11,14 @@ public class Main {
     //    技术部 -> [{name=李四, department=技术部, age=30 }, {name=张三, department=技术部, age=40 }]
     //    市场部 -> [{name=王五, department=市场部, age=40 }]
     public static Map<String, List<User>> collect(List<User> users) {
-        HashMap<String,List<User>> map = new HashMap<>();
-        for(User u : users){
-            if(map.containsKey(u.getDepartment())){
+        HashMap<String, List<User>> map = new HashMap<>();
+        for (User u : users) {
+            if (map.containsKey(u.getDepartment())) {
                 map.get(u.getDepartment()).add(u);
-            }else{
+            } else {
                 List<User> list = new ArrayList<>();
                 list.add(u);
-                map.put(u.getDepartment(),list);
+                map.put(u.getDepartment(), list);
             }
         }
         return map;
