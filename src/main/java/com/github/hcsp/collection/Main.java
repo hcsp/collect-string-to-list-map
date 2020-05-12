@@ -12,8 +12,11 @@ public class Main {
     //    技术部 -> [{name=李四, department=技术部, age=30 }, {name=张三, department=技术部, age=40 }]
     //    市场部 -> [{name=王五, department=市场部, age=40 }]
     public static Map<String, List<User>> collect(List<User> users) {
-        users.sort(Comparator.comparingInt(User::getAge));
-        return users.stream().collect(Collectors.groupingBy(User::getDepartment)) ;
+       users.sort(Comparator.comparingInt(User::getAge));
+       return users.stream().collect(Collectors.groupingBy(User::getDepartment));
+
+
+
 
 
     }
