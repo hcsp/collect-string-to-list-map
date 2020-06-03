@@ -11,7 +11,7 @@ public class Main {
     //    技术部 -> [{name=李四, department=技术部, age=30 }, {name=张三, department=技术部, age=40 }]
     //    市场部 -> [{name=王五, department=市场部, age=40 }]
     public static Map<String, List<User>> collect(List<User> users) {
-        HashMap<String,List<User>> hashMap = new HashMap<>();
+        HashMap<String, List<User>> hashMap = new HashMap<>();
         for (User user : users) {
             if (hashMap.containsKey(user.getDepartment())) {
                 hashMap.get(user.getDepartment()).add(user);
