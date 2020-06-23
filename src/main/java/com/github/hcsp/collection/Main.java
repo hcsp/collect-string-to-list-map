@@ -12,11 +12,11 @@ public class Main {
     //    技术部 -> [{name=李四, department=技术部, age=30 }, {name=张三, department=技术部, age=40 }]
     //    市场部 -> [{name=王五, department=市场部, age=40 }]
     public static Map<String, List<User>> collect(List<User> users) {
-        HashMap<String, List<User>> map= new HashMap<>();
-        for(User temp:users){
+        HashMap<String, List<User>> map = new HashMap<>();
+        for (User temp:users) {
             //map.put(temp.getDepartment(),List<User>.add(temp));
-            if(!map.containsKey(temp.getDepartment())){
-                map.put(temp.getDepartment(),new ArrayList<User>());
+             if (!map.containsKey(temp.getDepartment())){
+                map.put(temp.getDepartment(), new ArrayList<User>());
             }
             map.get(temp.getDepartment()).add(temp);
         }
