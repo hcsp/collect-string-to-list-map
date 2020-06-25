@@ -1,9 +1,7 @@
 package com.github.hcsp.collection;
 
 import java.util.*;
-import java.util.Map.Entry;
 
-import static java.util.Comparator.*;
 
 public class Main {
     // 请编写一个方法，对传入的List<User>进行如下处理：
@@ -16,9 +14,9 @@ public class Main {
     public static Map<String, List<User>> collect(List<User> users) {
         Map<String, List<User>> departmentMap = new HashMap<>();
 
-        for(User user: users) {
-            if(departmentMap.get(user.getDepartment()) == null) {
-                List<User>  departTemp = new ArrayList();
+        for (User user : users) {
+            if (departmentMap.get(user.getDepartment()) == null) {
+                List<User> departTemp = new ArrayList();
                 departTemp.add(user);
                 departmentMap.put(user.getDepartment(), departTemp);
             } else {
@@ -26,19 +24,19 @@ public class Main {
             }
         }
 
-        for (List<User> list: departmentMap.values()) {
+        for (List<User> list : departmentMap.values()) {
             list.sort(Comparator.comparingInt(User::getAge));
         }
 
-        return  departmentMap;
+        return departmentMap;
     }
 
     public static void main(String[] args) {
         System.out.println(
                 collect(
                         Arrays.asList(
-                            new User(1, "张三", 40, "技术部"),
-                            new User(2, "李四", 30, "技术部"),
-                            new User(3, "王五", 40, "市场部"))));
+                                new User(1, "张三", 40, "技术部"),
+                                new User(2, "李四", 30, "技术部"),
+                                new User(3, "王五", 40, "市场部"))));
     }
 }
