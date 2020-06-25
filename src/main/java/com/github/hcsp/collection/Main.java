@@ -1,8 +1,9 @@
 package com.github.hcsp.collection;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.Map.Entry;
+
+import static java.util.Comparator.*;
 
 public class Main {
     // 请编写一个方法，对传入的List<User>进行如下处理：
@@ -12,14 +13,32 @@ public class Main {
     // 返回如下映射：
     //    技术部 -> [{name=李四, department=技术部, age=30 }, {name=张三, department=技术部, age=40 }]
     //    市场部 -> [{name=王五, department=市场部, age=40 }]
-    public static Map<String, List<User>> collect(List<User> users) {}
+    public static Map<String, List<User>> collect(List<User> users) {
+        Map<String, List<User>> departmentMap = new HashMap<>();
+
+        for(User user: users) {
+            if(departmentMap.get(user.getDepartment()) == null) {
+                List<User>  departTemp = new ArrayList();
+                departTemp.add(user);
+                departmentMap.put(user.getDepartment(), departTemp);
+            } else {
+                departmentMap.get(user.getDepartment()).add(user);
+            }
+        }
+
+        for (List<User> list: departmentMap.values()) {
+            list.sort(Comparator.comparingInt(User::getAge));
+        }
+
+        return  departmentMap;
+    }
 
     public static void main(String[] args) {
         System.out.println(
                 collect(
                         Arrays.asList(
-                                new User(1, "张三", 40, "技术部"),
-                                new User(2, "李四", 30, "技术部"),
-                                new User(3, "王五", 40, "市场部"))));
+                            new User(1, "张三", 40, "技术部"),
+                            new User(2, "李四", 30, "技术部"),
+                            new User(3, "王五", 40, "市场部"))));
     }
 }
