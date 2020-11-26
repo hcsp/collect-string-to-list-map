@@ -1,6 +1,12 @@
 package com.github.hcsp.collection;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class Main {
     // 请编写一个方法，对传入的List<User>进行如下处理：
@@ -11,17 +17,17 @@ public class Main {
     //    技术部 -> [{name=李四, department=技术部, age=30 }, {name=张三, department=技术部, age=40 }]
     //    市场部 -> [{name=王五, department=市场部, age=40 }]
     public static Map<String, List<User>> collect(List<User> users) {
-        Map<String, List<User>> DepartMap = new HashMap<>();
+        Map<String, List<User>> departMap = new HashMap<>();
         List<User> hasExistedDepartList = new ArrayList<User>();
-        for (User currUser:users
+        for (User currUser : users
         ) {
-            if ( !DepartMap.containsKey( currUser.getDepartment().toString())){
+            if (!departMap.containsKey(currUser.getDepartment().toString())) {
                 //当用户的部门不存在map的时候，将员工对象加入新的List
                 List<User> notExistDepartList = new ArrayList<User>();
                 notExistDepartList.add(currUser);
-                DepartMap.put(currUser.getDepartment(), notExistDepartList);
+                departMap.put(currUser.getDepartment(), notExistDepartList);
                 hasExistedDepartList = notExistDepartList;
-            }else{
+            } else {
                 //当用户的部门存在map的时候，将员工对象加入已经存在的List
 
                 hasExistedDepartList.add(currUser);
@@ -34,11 +40,11 @@ public class Main {
                     }
 
                 });
-                DepartMap.put(currUser.getDepartment(), hasExistedDepartList);
+                departMap.put(currUser.getDepartment(), hasExistedDepartList);
             }
 
         }
-        return DepartMap;
+        return departMap;
     }
 
     public static void main(String[] args) {
