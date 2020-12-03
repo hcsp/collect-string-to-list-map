@@ -12,7 +12,7 @@ public class Main {
     //    市场部 -> [{name=王五, department=市场部, age=40 }]
     public static Map<String, List<User>> collect(List<User> users) {
         Map<String,List<User>> employees = new HashMap<>( );
-        Collections.sort( users );
+
 
         for (User user : users) {
             String department = user.getDepartment();
@@ -21,7 +21,9 @@ public class Main {
                 lists = new ArrayList<>( );
             }
             lists.add(user);
+            Collections.sort(lists);
             employees.put(department,lists);
+
         }
 
         return employees;
