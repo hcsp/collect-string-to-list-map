@@ -11,15 +11,18 @@ public class Main {
     //    技术部 -> [{name=李四, department=技术部, age=30 }, {name=张三, department=技术部, age=40 }]
     //    市场部 -> [{name=王五, department=市场部, age=40 }]
     public static Map<String, List<User>> collect(List<User> users) {
-
         Map<String,List<User>> employees = new HashMap<>( );
+        Collections.sort( users );
 
-        users.forEach(user -> employees.put( user.getDepartment(), new ArrayList<>( )));
-
-        users.forEach(user -> {
-            employees.get( user.getDepartment() ).add( user );
-            employees.get( user.getDepartment() ).sort( Comparator.comparingInt( User::getAge ) );
-        });
+        for (User user : users) {
+            String department = user.getDepartment();
+            List<User> lists = employees.get(department);
+            if(lists == null) {
+                lists = new ArrayList<>( );
+            }
+            lists.add(user);
+            employees.put(department,lists);
+        }
 
         return employees;
     }
