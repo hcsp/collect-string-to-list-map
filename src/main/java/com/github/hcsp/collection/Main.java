@@ -11,22 +11,22 @@ public class Main {
     //    技术部 -> [{name=李四, department=技术部, age=30 }, {name=张三, department=技术部, age=40 }]
     //    市场部 -> [{name=王五, department=市场部, age=40 }]
     public static Map<String, List<User>> collect(List<User> users) {
+
         Map<String,List<User>> employees = new HashMap<>( );
 
-        users.forEach( user -> employees.put( user.getDepartment(), new ArrayList<>( )));
-        users.forEach( user -> {
+        users.forEach(user -> employees.put( user.getDepartment(), new ArrayList<>( )));
+
+        users.forEach(user -> {
             employees.get( user.getDepartment() ).add( user );
             employees.get( user.getDepartment() ).sort( Comparator.comparingInt( User::getAge ) );
-        } );
-
+        });
 
         return employees;
     }
 
     public static void main(String[] args) {
         System.out.println(
-                collect(
-                        Arrays.asList(
+                collect(Arrays.asList(
                                 new User(1, "张三", 40, "技术部"),
                                 new User(2, "李四", 30, "技术部"),
                                 new User(3, "王五", 40, "市场部"),
