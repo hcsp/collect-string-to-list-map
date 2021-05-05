@@ -1,7 +1,11 @@
 package com.github.hcsp.collection;
 
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class Main {
     // 请编写一个方法，对传入的List<User>进行如下处理：
