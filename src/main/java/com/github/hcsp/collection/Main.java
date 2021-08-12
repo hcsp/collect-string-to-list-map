@@ -11,7 +11,7 @@ public class Main {
     //    技术部 -> [{name=李四, department=技术部, age=30 }, {name=张三, department=技术部, age=40 }]
     //    市场部 -> [{name=王五, department=市场部, age=40 }]
     public static Map<String, List<User>> collect(List<User> users) {
-        Map<String, List<User>> sortByDepart = new TreeMap<>();
+        Map<String, List<User>> sortByDepart = new HashMap<>();
         List<User> userList = new ArrayList<>();
         Set<String> departmentName = new HashSet<>();
         for (User depart : users
@@ -26,9 +26,11 @@ public class Main {
                     }
                 });
                 userSet.addAll(value);
-                LinkedList<User> user = new LinkedList<>();
-                user.addAll(userSet);
-                sortByDepart.put(depart.getDepartment(),user);
+//                LinkedList<User> user = new LinkedList<>();
+//                user.addAll(userSet);
+                value.clear();
+                value.addAll(userSet);
+                sortByDepart.put(depart.getDepartment(), value);
             } else {
                 List<User> newDepart = new ArrayList();
                 newDepart.add(depart);
