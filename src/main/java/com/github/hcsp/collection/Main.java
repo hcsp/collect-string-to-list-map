@@ -41,5 +41,15 @@ public class Main {
                                 new User(2, "李四", 30, "技术部"),
                                 new User(3, "王五", 40, "市场部"))));
     }
+
+    private static class SortByUserId implements Comparator<User> {
+        @Override
+        public int compare(User u1, User u2) {
+            if (u1.getAge() > u2.getAge()) {
+                return 1;
+            }
+            return -1;
+        }
+    }
 }
 
