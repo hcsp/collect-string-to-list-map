@@ -11,36 +11,35 @@ public class Main {
     //    技术部 -> [{name=李四, department=技术部, age=30 }, {name=张三, department=技术部, age=40 }]
     //    市场部 -> [{name=王五, department=市场部, age=40 }]
     public static Map<String, List<User>> collect(List<User> users) {
-        Set<String> set = new HashSet();
-        users.forEach(user -> {
-            set.add(user.getDepartment());
-        });
+        Set<String> departmentName = new HashSet();
+        // 收集部门
+        for (User user : users) {
+            departmentName.add(user.getDepartment());
+        }
+        //创建一个键值对
         Map<String, List<User>> map = new HashMap<>();
         // 遍历所有的部门，再遍历所有对象将是这个的对象加到这个部门
-        set.forEach(department -> {
-            ArrayList list = new ArrayList();
-            users.forEach(user -> {
-                if (user.getDepartment() == department) {
-                    list.add(user);
+        for (String Dname : departmentName) {
+            ArrayList partlist = new ArrayList();
+            for (User user : users) {
+                if (Dname.equals(user.getDepartment())) {
+                    partlist.add(user);
                 }
-            });
-
-            // 将每个部门的对象的年龄按照从小到大的顺序排序
-            Collections.sort(list, new SortByUserId());
-            map.put(department, list);
-        });
+            }
+            //年龄排序
+            Collections.sort(partlist, new sortage());
+            map.put(Dname, partlist);
+        }
         return map;
     }
 
-    private static class SortByUserId implements Comparator<User> {
+    private static class sortage implements Comparator<User> {
         @Override
         public int compare(User o1, User o2) {
             if (o1.getAge() > o2.getAge()) {
                 return 1;
-            } else if (o1.getAge() < o2.getAge()) {
-                return -1;
             }
-            return 0;
+            return -1;
         }
     }
 
