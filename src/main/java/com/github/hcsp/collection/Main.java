@@ -12,10 +12,11 @@ public class Main {
     //    市场部 -> [{name=王五, department=市场部, age=40 }]
     public static Map<String, List<User>> collect(List<User> users) {
         Map<String, List<User>> map = new HashMap<>();
-        for(User u : users){
+        for (User u : users){
             String deptName = u.getDepartment();
-            if (!map.containsKey(deptName))
+            if (!map.containsKey(deptName)){
                 map.put(deptName, new ArrayList<User>());
+            }
 
             map.get(deptName).add(u);
             map.get(deptName).sort(Comparator.comparingInt(User::getAge));
