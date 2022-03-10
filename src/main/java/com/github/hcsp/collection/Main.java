@@ -13,25 +13,20 @@ public class Main {
     public static Map<String, List<User>> collect(List<User> users) {
         Collections.sort(users);
         Map<String, List<User>> map = new HashMap<>();
-        for(User user : users) {
-            if(map.containsKey(user.getDepartment())) {
+        for (User user : users) {
+            if (map.containsKey(user.getDepartment())) {
                 map.get(user.getDepartment()).add(user);
             } else {
                 List<User> userList = new ArrayList<>();
                 userList.add(user);
-                map.put(user.getDepartment(),userList);
+                map.put(user.getDepartment(), userList);
             }
         }
         return map;
-        
+
     }
 
     public static void main(String[] args) {
-        System.out.println(
-                collect(
-                        Arrays.asList(
-                                new User(1, "张三", 40, "技术部"),
-                                new User(2, "李四", 30, "技术部"),
-                                new User(3, "王五", 40, "市场部"))));
+        System.out.println(collect(Arrays.asList(new User(1, "张三", 40, "技术部"), new User(2, "李四", 30, "技术部"), new User(3, "王五", 40, "市场部"))));
     }
 }
