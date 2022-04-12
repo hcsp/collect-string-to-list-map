@@ -1,6 +1,11 @@
 package com.github.hcsp.collection;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+import java.util.HashMap;
+import java.util.ArrayList;
+import java.util.Comparator;
 
 public class Main {
     // 请编写一个方法，对传入的List<User>进行如下处理：
@@ -12,8 +17,7 @@ public class Main {
     //    市场部 -> [{name=王五, department=市场部, age=40 }]
     public static Map<String, List<User>> collect(List<User> users) {
         HashMap<String,List<User>> map = new HashMap<>();
-        for (User user :users
-             ) {
+        for (User user :users) {
             String department =user.getDepartment();
             if(!map.containsKey(department)){
                 map.put(department,new ArrayList<>());
