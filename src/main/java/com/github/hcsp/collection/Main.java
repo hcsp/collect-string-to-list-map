@@ -12,6 +12,12 @@ public class Main {
     //    市场部 -> [{name=王五, department=市场部, age=40 }]
     public static Map<String, List<User>> collect(List<User> users) {
         Map<String,List<User>> userListByDepartment=new HashMap<>();
+        Collections.sort(users, new Comparator<User>() {
+            @Override
+            public int compare(User o1, User o2) {
+                return o1.getAge() - o2.getAge();
+            }
+        });
         for (User user:users
         ) {
             String departmentKey=user.getDepartment();
@@ -19,7 +25,6 @@ public class Main {
                 userListByDepartment.put(departmentKey,new ArrayList<>());
             }
             userListByDepartment.get(departmentKey).add(user);
-            Collections.sort(userListByDepartment.get(departmentKey));
         }
         return userListByDepartment;
     }
