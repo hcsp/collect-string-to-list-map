@@ -2,7 +2,7 @@ package com.github.hcsp.collection;
 
 import java.util.Objects;
 
-public class User{
+public class User implements Comparable<User>{
     // 用户的id
     private final Integer id;
     // 用户的姓名
@@ -52,6 +52,15 @@ public class User{
         return Objects.hash(id);
     }
 
+    @Override
+    public int compareTo(User that) {
+        if (getAge() == that.getAge()) {
+            if (Objects.equals(getId(), that.getId())) {
+                return 0;
+            }
+        }
+        return getAge() > that.getAge() ? 1 : -1;
+    }
     @Override
     public String toString() {
         return "{" +
