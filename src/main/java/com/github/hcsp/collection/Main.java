@@ -20,7 +20,9 @@ public class Main {
                 userListByDepartment.put(departmentKey,new ArrayList<>());
             }
             userListByDepartment.get(departmentKey).add(user);
-            Collections.sort(userListByDepartment.get(departmentKey), new Comparator<User>() {
+        }
+        for (List<User> list:userListByDepartment.values()){
+            list.sort(new Comparator<User>() {
                 @Override
                 public int compare(User o1, User o2) {
                     return o1.getAge() - o2.getAge();
