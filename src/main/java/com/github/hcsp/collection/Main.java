@@ -14,11 +14,14 @@ public class Main {
         Map<String,List<User>> userListByDepartment=new HashMap<>();
         for (User user:users
              ) {
-            if (!userListByDepartment.containsKey(user.getDepartment())){
-                userListByDepartment.put(user.getDepartment(),new ArrayList<>());
+            List<User> userList;
+            if (userListByDepartment.containsKey(user.getDepartment())){
+                userList=userListByDepartment.get(user.getDepartment());
+            }else {
+                userList=new ArrayList<>();
             }
-            userListByDepartment.get(user.getDepartment()).add(user);
-            userListByDepartment.get(user.getDepartment()).sort(new Comparator<User>() {
+            userList.add(user);
+            userList.sort(new Comparator<User>() {
                 @Override
                 public int compare(User o1, User o2) {
                     if (o1.getAge()==o2.getAge()){
@@ -27,7 +30,9 @@ public class Main {
                     return (o1.getAge()>o2.getAge())?1:-1;
                 }
             });
+            userListByDepartment.put(user.getDepartment(),userList);
         }
+
         return userListByDepartment;
     }
 
