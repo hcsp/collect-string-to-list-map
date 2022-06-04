@@ -13,26 +13,14 @@ public class Main {
     public static Map<String, List<User>> collect(List<User> users) {
         Map<String,List<User>> userListByDepartment=new HashMap<>();
         for (User user:users
-             ) {
-            List<User> userList;
-            if (userListByDepartment.containsKey(user.getDepartment())){
-                userList=userListByDepartment.get(user.getDepartment());
-            }else {
-                userList=new ArrayList<>();
+        ) {
+            String departmentKey=user.getDepartment();
+            if (!userListByDepartment.containsKey(departmentKey)){
+                userListByDepartment.put(departmentKey,new ArrayList<>());
             }
-            userList.add(user);
-            userList.sort(new Comparator<User>() {
-                @Override
-                public int compare(User o1, User o2) {
-                    if (o1.getAge()==o2.getAge()){
-                        return 0;
-                    }
-                    return (o1.getAge()>o2.getAge())?1:-1;
-                }
-            });
-            userListByDepartment.put(user.getDepartment(),userList);
+            userListByDepartment.get(departmentKey).add(user);
+            Collections.sort(userListByDepartment.get(departmentKey));
         }
-
         return userListByDepartment;
     }
 
