@@ -11,18 +11,25 @@ public class Main {
     //    技术部 -> [{name=李四, department=技术部, age=30 }, {name=张三, department=技术部, age=40 }]
     //    市场部 -> [{name=王五, department=市场部, age=40 }]
     public static Map<String, List<User>> collect(List<User> users) {
-        Collections.sort(users);
-        Map<String, List<User>> map = new HashMap<>();
-        for (User user : users) {
-            if (map.containsKey(user.getDepartment())) {
-                map.get(user.getDepartment()).add(user);
-            } else {
-                List<User> userList = new ArrayList<>();
-                userList.add(user);
-                map.put(user.getDepartment(), userList);
+        Map<String,List<User>> userListByDepartment=new HashMap<>();
+
+        for (User user:users
+        ) {
+            String departmentKey=user.getDepartment();
+            if (!userListByDepartment.containsKey(departmentKey)){
+                userListByDepartment.put(departmentKey,new ArrayList<>());
             }
+            userListByDepartment.get(departmentKey).add(user);
         }
-        return map;
+        for (List<User> list:userListByDepartment.values()){
+            list.sort(new Comparator<User>() {
+                @Override
+                public int compare(User o1, User o2) {
+                    return o1.getAge() - o2.getAge();
+                }
+            });
+        }
+        return userListByDepartment;
     }
 
     public static void main(String[] args) {
