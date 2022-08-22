@@ -53,8 +53,7 @@ public class User implements Comparable<User> {
     }
 
     public int compareTo(User user) {
-        return this.age - user.age;//this-参数 升序
-        //return o.age - this.age  降序
+        return this.age - user.age;
     }
 
 }
