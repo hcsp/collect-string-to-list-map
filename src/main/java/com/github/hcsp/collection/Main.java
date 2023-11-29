@@ -1,6 +1,7 @@
 package com.github.hcsp.collection;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Main {
     // 请编写一个方法，对传入的List<User>进行如下处理：
@@ -11,25 +12,9 @@ public class Main {
     //    技术部 -> [{name=李四, department=技术部, age=30 }, {name=张三, department=技术部, age=40 }]
     //    市场部 -> [{name=王五, department=市场部, age=40 }]
     public static Map<String, List<User>> collect(List<User> users) {
-        Map<String, List<User>> departmentMap = new HashMap<>();
-        for (User usr :
-                users) {
-            if (departmentMap.get(usr.getDepartment()) == null) {
-                departmentMap.put(usr.getDepartment(), new ArrayList<>(Arrays.asList(usr)));
-            } else {
-                departmentMap.get(usr.getDepartment()).add(usr);
-            }
-        }
-        for (List<User> userList :
-                departmentMap.values()) {
-            userList.sort(new Comparator<User>() {
-                @Override
-                public int compare(User o1, User o2) {
-                    return o1.getAge() - o2.getAge();
-                }
-            });
-        }
-        return departmentMap;
+        List<User> userList = new ArrayList<>(users);
+        userList.sort(Comparator.comparingInt(User::getAge));
+        return userList.stream().collect(Collectors.groupingBy(User::getDepartment));
     }
 
     public static void main(String[] args) {
