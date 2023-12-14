@@ -32,6 +32,7 @@ public class User {
     }
 
     public String getDepartment() {
+
         return department;
     }
 
@@ -49,6 +50,7 @@ public class User {
 
     @Override
     public int hashCode() {
+
         return Objects.hash(id);
     }
 }
