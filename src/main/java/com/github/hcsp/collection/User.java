@@ -31,6 +31,16 @@ public class User {
         return age;
     }
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                ", department='" + department + '\'' +
+                '}';
+    }
+
     public String getDepartment() {
         return department;
     }
